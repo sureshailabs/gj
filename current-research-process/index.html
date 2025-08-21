@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geojit Research Process Flow</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+        text-align: center;
+        padding: 30px;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 2.5em;
+        font-weight: 300;
+      }
+
+      .subtitle {
+        margin: 10px 0 0 0;
+        opacity: 0.9;
+        font-size: 1.1em;
+      }
+
+      .main-content {
+        padding: 40px;
+      }
+
+      .team-structure {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .team-card {
+        background: #f8f9ff;
+        padding: 25px;
+        border-radius: 15px;
+        border-left: 5px solid #667eea;
+      }
+
+      .team-card h3 {
+        color: #1e3c72;
+        margin-top: 0;
+        font-size: 1.4em;
+      }
+
+      .coverage-stats {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        text-align: center;
+      }
+
+      .stat-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 10px;
+      }
+
+      .process-flow {
+        margin: 40px 0;
+      }
+
+      .process-title {
+        text-align: center;
+        color: #1e3c72;
+        font-size: 2em;
+        margin-bottom: 30px;
+      }
+
+      .flow-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .process-column {
+        background: #f8f9ff;
+        padding: 25px;
+        border-radius: 15px;
+      }
+
+      .process-step {
+        background: white;
+        margin: 15px 0;
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        position: relative;
+      }
+
+      .step-number {
+        position: absolute;
+        left: -15px;
+        top: 15px;
+        background: #667eea;
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.9em;
+      }
+
+      .step-title {
+        font-weight: bold;
+        color: #1e3c72;
+        margin-bottom: 8px;
+        padding-left: 20px;
+      }
+
+      .step-description {
+        color: #666;
+        line-height: 1.5;
+        padding-left: 20px;
+      }
+
+      .pain-points {
+        background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        padding: 30px;
+        border-radius: 15px;
+        margin: 30px 0;
+      }
+
+      .pain-points h3 {
+        color: #8b0000;
+        margin-top: 0;
+        font-size: 1.5em;
+      }
+
+      .pain-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      .pain-item {
+        background: rgba(255, 255, 255, 0.3);
+        padding: 15px;
+        border-radius: 10px;
+        border-left: 4px solid #ff6b6b;
+      }
+
+      .data-sources {
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        padding: 25px;
+        border-radius: 15px;
+        margin: 30px 0;
+      }
+
+      .sources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .source-item {
+        background: rgba(255, 255, 255, 0.4);
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .research-genie {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin: 30px 0;
+      }
+
+      .research-genie h3 {
+        margin-top: 0;
+        font-size: 1.8em;
+      }
+
+      .genie-workflow {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 25px;
+        border-radius: 12px;
+        margin: 20px 0;
+      }
+
+      .workflow-steps {
+        display: grid;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .genie-step {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 15px;
+        border-radius: 10px;
+        border-left: 4px solid #ffd700;
+      }
+
+      .step-icon {
+        font-size: 2em;
+        margin-right: 20px;
+        min-width: 60px;
+      }
+
+      .step-content {
+        flex: 1;
+      }
+
+      .step-content strong {
+        display: block;
+        margin-bottom: 5px;
+        color: #ffd700;
+      }
+
+      .step-content p {
+        margin: 0;
+        opacity: 0.9;
+        line-height: 1.4;
+      }
+
+      .genie-benefits {
+        margin-top: 25px;
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .benefit-item {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 15px;
+        border-radius: 10px;
+        border-left: 4px solid #00ff88;
+      }
+
+      .benefit-item strong {
+        display: block;
+        margin-bottom: 8px;
+        color: #00ff88;
+      }
+
+      .benefit-item p {
+        margin: 0;
+        opacity: 0.9;
+        font-size: 0.9em;
+      }
+
+      .arrow {
+        text-align: center;
+        font-size: 2em;
+        color: #667eea;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Geojit Research Team</h1>
+        <p class="subtitle">
+          Current Process Flow for Fundamental & Technical Analysis
+        </p>
+      </div>
+
+      <div class="main-content">
+        <!-- Team Structure -->
+        <div class="team-structure">
+          <div class="team-card">
+            <h3>🔍 Fundamental Research</h3>
+            <p>
+              <strong>Focus:</strong> Company analysis, sector-wise coverage
+            </p>
+            <p>
+              <strong>Team Size:</strong> ~20 people (10-12 analysts + data
+              analysts)
+            </p>
+            <p><strong>Output:</strong> Detailed PDF reports (10-12 pages)</p>
+            <p><strong>Timeline:</strong> Long-term (12 months)</p>
+            <p><strong>Key Sources:</strong> Annual reports, CMI, Bloomberg</p>
+          </div>
+
+          <div class="team-card">
+            <h3>📈 Technical Research</h3>
+            <p><strong>Focus:</strong> Chart analysis, short-term trading</p>
+            <p><strong>Team Size:</strong> Smaller dedicated team</p>
+            <p><strong>Output:</strong> Daily reports, recommendations</p>
+            <p><strong>Timeline:</strong> Short-term (1-30 days)</p>
+            <p>
+              <strong>Key Sources:</strong> Bloomberg, Reuters, Trading View
+            </p>
+          </div>
+        </div>
+
+        <!-- Coverage Statistics -->
+        <div class="coverage-stats">
+          <h3>📊 Current Coverage Statistics</h3>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <h4>300</h4>
+              <p>Total Scripts Covered</p>
+            </div>
+            <div class="stat-item">
+              <h4>90</h4>
+              <p>In-house Research</p>
+            </div>
+            <div class="stat-item">
+              <h4>130</h4>
+              <p>Outsourced (CRISIL)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Process Flow -->
+        <div class="process-flow">
+          <h2 class="process-title">🔄 Research Process Flow</h2>
+
+          <div class="flow-container">
+            <!-- Fundamental Process -->
+            <div class="process-column">
+              <h3 style="text-align: center; color: #1e3c72">
+                Fundamental Analysis Process
+              </h3>
+
+              <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-title">Data Collection</div>
+                <div class="step-description">
+                  Manual extraction from annual reports, quarterly results,
+                  NSE/BSE filings. Heavy Excel-based data entry (70% of time
+                  spent here).
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-title">Excel Model Update</div>
+                <div class="step-description">
+                  Update 5-10 year historical data in sector-specific Excel
+                  models. Each analyst owns Excel sheets for their coverage.
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-title">Analysis & Forecasting</div>
+                <div class="step-description">
+                  Financial modeling, peer comparison, growth analysis. Generate
+                  forecasts based on historical trends and market outlook.
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-title">Report Writing</div>
+                <div class="step-description">
+                  Create 10-12 page detailed reports with charts, rationale, and
+                  recommendations (Buy/Hold/Sell with target prices).
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">5</div>
+                <div class="step-title">Approval Workflow</div>
+                <div class="step-description">
+                  Editor review → HOD approval → Compliance check (holdings,
+                  relationships, disclosure requirements).
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">6</div>
+                <div class="step-title">Publishing</div>
+                <div class="step-description">
+                  Manual data entry into MoEngage platform → Distribution to
+                  clients via email, website, mobile app.
+                </div>
+              </div>
+            </div>
+
+            <!-- Technical Process -->
+            <div class="process-column">
+              <h3 style="text-align: center; color: #1e3c72">
+                Technical Analysis Process
+              </h3>
+
+              <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-title">Market Data Analysis</div>
+                <div class="step-description">
+                  Daily analysis of price/volume patterns using Bloomberg,
+                  Reuters. Focus on charts, indicators, and technical patterns.
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-title">Pattern Recognition</div>
+                <div class="step-description">
+                  Identify technical patterns (triangles, support/resistance).
+                  Some automation available in Bloomberg for basic patterns.
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-title">Daily Report Creation</div>
+                <div class="step-description">
+                  Generate daily market outlook by 8:30 AM. Short-term
+                  recommendations with entry/exit points and stop losses.
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-title">Intraday Updates</div>
+                <div class="step-description">
+                  Real-time recommendations during market hours based on price
+                  movements and news flow.
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">5</div>
+                <div class="step-title">Back Office Processing</div>
+                <div class="step-description">
+                  Input recommendations into research system (EXE file) with
+                  ratings, targets, and rationale.
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">6</div>
+                <div class="step-title">Distribution</div>
+                <div class="step-description">
+                  Automated distribution through CMS to customer databases. Push
+                  notifications for urgent updates.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Sources -->
+        <div class="data-sources">
+          <h3>📊 Key Data Sources</h3>
+          <div class="sources-grid">
+            <div class="source-item">
+              <strong>Bloomberg Terminal</strong><br />
+              Market data, news, analytics
+            </div>
+            <div class="source-item">
+              <strong>CMI Database</strong><br />
+              Historical financial data
+            </div>
+            <div class="source-item">
+              <strong>Annual Reports</strong><br />
+              Company fundamentals
+            </div>
+            <div class="source-item">
+              <strong>NSE/BSE Filings</strong><br />
+              Quarterly results
+            </div>
+            <div class="source-item">
+              <strong>Reuters</strong><br />
+              News and market data
+            </div>
+            <div class="source-item">
+              <strong>Trading View</strong><br />
+              Charts and indicators
+            </div>
+          </div>
+        </div>
+
+        <!-- Pain Points -->
+        <div class="pain-points">
+          <h3>⚠️ Major Pain Points</h3>
+          <div class="pain-list">
+            <div class="pain-item">
+              <strong>Manual Data Entry:</strong> 70% of time spent on Excel
+              data punching
+            </div>
+            <div class="pain-item">
+              <strong>Legacy Systems:</strong> Outdated back-office applications
+              causing delays
+            </div>
+            <div class="pain-item">
+              <strong>Data Quality Issues:</strong> Poor OCR quality from
+              scanned exchange documents
+            </div>
+            <div class="pain-item">
+              <strong>No Real-time Integration:</strong> Systems isolated for
+              security, causing inefficiencies
+            </div>
+            <div class="pain-item">
+              <strong>Version Control:</strong> Excel files stored in folders
+              without proper versioning
+            </div>
+            <div class="pain-item">
+              <strong>Compliance Bottlenecks:</strong> Manual compliance checks
+              causing delays
+            </div>
+          </div>
+        </div>
+
+        <!-- Research Genie Implementation -->
+        <div class="research-genie">
+          <h3>🧞 Research Genie - Current Automation Solution</h3>
+          <p style="margin-bottom: 20px; font-style: italic; color: #2c3e50">
+            Geojit has implemented "Research Genie" - an AI-powered automation
+            system to address the manual data entry challenges.
+          </p>
+
+          <div class="genie-workflow">
+            <h4 style="color: #1e3c72; margin-bottom: 15px">
+              Research Genie Workflow:
+            </h4>
+
+            <div class="workflow-steps">
+              <div class="genie-step">
+                <div class="step-icon">📊</div>
+                <div class="step-content">
+                  <strong>1. Company Input</strong>
+                  <p>Analyst enters company name into the system</p>
+                </div>
+              </div>
+
+              <div class="genie-step">
+                <div class="step-icon">🔗</div>
+                <div class="step-content">
+                  <strong>2. CMIE API Integration</strong>
+                  <p>Automated data fetch from CMIE database via API calls</p>
+                </div>
+              </div>
+
+              <div class="genie-step">
+                <div class="step-icon">🤖</div>
+                <div class="step-content">
+                  <strong>3. AI Matching (MiniLM)</strong>
+                  <p>
+                    Microsoft's Sentence Transformers - MiniLM model matches
+                    data fields using semantic similarity
+                  </p>
+                </div>
+              </div>
+
+              <div class="genie-step">
+                <div class="step-icon">✅</div>
+                <div class="step-content">
+                  <strong>4. Analyst Verification</strong>
+                  <p>Human-in-the-loop validation of matched data accuracy</p>
+                </div>
+              </div>
+
+              <div class="genie-step">
+                <div class="step-icon">📈</div>
+                <div class="step-content">
+                  <strong>5. Template Processing</strong>
+                  <p>Automated calculations using master Excel templates</p>
+                </div>
+              </div>
+
+              <div class="genie-step">
+                <div class="step-icon">📋</div>
+                <div class="step-content">
+                  <strong>6. Report Generation</strong>
+                  <p>
+                    Final report with charts, calculations, and analyst inputs
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="genie-benefits">
+            <h4 style="color: #1e3c72; margin: 25px 0 15px 0">
+              Key Benefits Achieved:
+            </h4>
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <strong>⏱️ Time Efficiency</strong>
+                <p>Reduces data processing time from hours to minutes</p>
+              </div>
+              <div class="benefit-item">
+                <strong>🎯 Improved Accuracy</strong>
+                <p>AI-driven data matching reduces human errors</p>
+              </div>
+              <div class="benefit-item">
+                <strong>📊 Enhanced Coverage</strong>
+                <p>Enables analysis of more stocks with same resources</p>
+              </div>
+              <div class="benefit-item">
+                <strong>🔄 Streamlined Workflow</strong>
+                <p>Eliminates manual Excel data entry bottlenecks</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
